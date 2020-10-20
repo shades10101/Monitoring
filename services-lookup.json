@@ -1,0 +1,12 @@
+
+[
+	{
+		"serviceName":"JBossEAP6.4"
+	},
+	{
+		"serviceName":"AQS"
+	},
+	{
+		"serviceName":"UIF"
+	}
+]

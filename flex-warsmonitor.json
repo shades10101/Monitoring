@@ -1,0 +1,6 @@
+[
+	{
+		"directory":"C:/JBossEAP6.4/standalone/deployments",
+		"recursive": "-Recurse"
+	}
+]

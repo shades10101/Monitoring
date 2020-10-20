@@ -1,0 +1,13 @@
+# Use forward slashes on Windows paths as Flex handles these more gracefully
+# This script will lookup the json file which tells New Relic to work on the folder "C:/JBossEAP6.4/standalone/deployments/EWMS"
+# From there I use powershell to recursivly lookup files in the directory that have .failed
+integrations:
+  - name: nri-flex    
+    config:
+      name: warsmonitortest
+      lookup_file: "C:/Program Files/New Relic/newrelic-infra/integrations.d/flex-warsmonitor.json"
+      apis:
+        - name: IsWarsDeplyed
+          shell: powershell
+          commands:
+            - run: "Get-ChildItem -Path \"${lf:directory}\" -File ${lf:recursive} | Select-Object -Property Name | ConvertTo-Json"

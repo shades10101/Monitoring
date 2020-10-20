@@ -1,0 +1,8 @@
+# This config will query the status of specified Windows Services
+name: winServiceStatus
+lookup_file: "C:/Program Files/New Relic/newrelic-infra/integrations.d/services-lookup.json"
+apis:
+  - name: winServiceStatus
+    shell: powershell
+    commands:
+      - run: "Get-Service -Name \"${lf:serviceName}\" | Select-Object -Property @{ Name = \"ServiceName\"; Expression = { \"${lf:serviceName}\" } }, @{ Name = \"ServiceDisplayName\"; Expression = { $_.DisplayName } }, @{ Name = \"ServiceStatus\"; Expression = { switch ( $_.Status | ConvertTo-Json ) { 1 { \"Stopped\" } 2 { \"StartPending\" } 3 { \"StopPending\" } 4 { \"Running\" } 5 { \"ContinuePending\" } 6 { \"PausePending\" } 7 { \"Paused\" } } } } | ConvertTo-Json"
