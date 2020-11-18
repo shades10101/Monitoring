@@ -1,3 +1,3 @@
 # Monitoring
 
-New Relic scripts fo custom metrics & alerts
+New Relic scripts for custom metrics & alerts
