@@ -1,6 +1,8 @@
 # Use forward slashes on Windows paths as Flex handles these more gracefully
 # This script will lookup the json file which tells New Relic to work on the folder "C:/JBossEAP6.4/standalone/deployments/EWMS"
-# It will forward the filenames to New Relic.
+# It will forward the filenames to New Relic. On New relic I use the below to find files tat end in .failed.
+# SELECT count(*) FROM  IsWarsDeplyedSample where Name Like '%failed' OR  Name NOT LIKE '%deployed' and Name NOT LIKE '%war' and Name NOT LIKE '%txt'  and Name NOT LIKE '%ear' and hostname = 'acpi-uat'
+# 
 integrations:
   - name: nri-flex    
     config:
